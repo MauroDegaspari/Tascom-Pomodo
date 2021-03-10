@@ -1,0 +1,30 @@
+    .Bar{
+    display: flex;
+    align-items: center;
+    }
+    
+    .Bar span{
+     font-size: 1rem;
+    }
+    
+    .Bar > div{
+        flex: 1;
+        height: 4px;
+        border-radius: 4px;
+        background: var(--gray-line);
+        margin:0 1.5rem ;
+        position: relative;
+    }
+    
+    .Bar > div >div {
+        height: 4px;
+        border-radius: 4px;
+        background: var(--green);
+        
+    }
+    
+    span.porcentagemXp{
+        position: absolute;
+        top: 12px;
+        transform: translateX(-50%);
+    }
