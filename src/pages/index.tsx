@@ -5,14 +5,19 @@ import { Tempo } from "../components/Tempo";
 
 import styles from '../styles/pages/Home.module.css';
 
+import Head from 'next/head'
+
 
 export default function Home() {
   return (
   <div className={styles.Container}>
+    <head>
+      <title>Tascom | Score</title>
+    </head>
     <Bar/>
      <section>
        <div>
-          <Profile/>
+         <Profile/>
          <DesafioCompletos/>
          <Tempo/>
        </div>
