@@ -59,8 +59,24 @@
 
 }
 
-.tempoButton:hover{
+.tempoButton:not(:disabled):hover{
     background: var(--blue-dark);
 
+}
+.tempoButtonAtivo{
+    border: 1px solid var(--title);
+    background: var(--while);
+    color: var(--title);
+}
+
+.tempoButtonAtivo:not(:disabled):hover{
+    border: 0px;
+    background: var(--red);
+    color: var(--white);
+}
+
+.tempoButton:disabled{
+    cursor: not-allowed;
+    background: chartreuse;
 }
 
