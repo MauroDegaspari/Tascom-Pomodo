@@ -6,6 +6,7 @@ import { Tempo } from "../components/Tempo";
 import styles from '../styles/pages/Home.module.css';
 
 import Head from 'next/head'
+import { Desafio } from "../components/Desafio";
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
        </div>
 
        <div>
+         <Desafio/>
 
        </div>
      </section>
