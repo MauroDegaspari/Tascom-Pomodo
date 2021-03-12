@@ -7,14 +7,16 @@ import styles from '../styles/pages/Home.module.css';
 
 import Head from 'next/head'
 import { Desafio } from "../components/Desafio";
+import { Cabecario } from "../components/Cabecario";
 
 
 export default function Home() {
   return (
   <div className={styles.Container}>
     <head>
-      <title>Tascom | Score</title>
+      <title>Tascom | Pomodoro</title>
     </head>
+    <Cabecario/>
     <Bar/>
      <section>
        <div>
