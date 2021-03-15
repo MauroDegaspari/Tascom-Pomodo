@@ -7,7 +7,7 @@ let paraTempo: NodeJS.Timeout;
 export function Tempo(){
 
     /* Javascript do timer */
-    const [time, setTime] = useState(0.1 * 60);
+    const [time, setTime] = useState(25 * 60);
     const [isAtivo, setIsAtivo] = useState(false);
     const [hasTermino, setHastermino] = useState(false);
 
