@@ -11,6 +11,7 @@ interface Desafio{
 // dados que seram retonados dentro do context
 interface DesadioContextData{
     level: number;
+    proximoNivel: number;
     subirDeLevel: () => void;
     barraDeLevel: number;
     desafioConcluido: number;
@@ -31,6 +32,11 @@ export function DesafioProvider({ children }: DesafioProviderProps){
     const[desafioConcluido, serDesafioConcluido] = useState(0);
 
     const[ativaDesafio, setAtivaDesafio] = useState(null);
+    
+    // formula para calcular experiencia do ususario
+    const proximoNivel = Math.pow((level + 1) * 4, 2);
+
+    
      
     function subirDeLevel(){
         setLevel(level + 1);
@@ -50,6 +56,7 @@ export function DesafioProvider({ children }: DesafioProviderProps){
                     ativaDesafio,
                     subirDeLevel, 
                     barraDeLevel,
+                    proximoNivel,
                     desafioConcluido,
                     comecoDesafio }}>
             { children}
