@@ -5,16 +5,13 @@ import styles from '../styles/components/Desafio.module.css'
 export function Desafio(){
 
     //contexts
-    const contextData = useContext(DesafioContexts);
-
-
-    const hasAtivoDesafio = true;
+    const {ativaDesafio} = useContext(DesafioContexts);
 
     return(
         <div className={styles.desafioContainer}>                       
-           { hasAtivoDesafio ? (
+           { ativaDesafio ? (
                <div className={styles.desafioAtivo}>
-                   <header>Ganhe 400xp</header>
+                   <header>Ganhe {ativaDesafio.amount}</header>
 
                    <main>
                        <img src="icons/dumbbell.svg" ></img>
