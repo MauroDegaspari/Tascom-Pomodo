@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { DesafioContexts } from '../contexts/DesafioContext';
 import styles from '../styles/components/Tempo.module.css'
 
 
@@ -6,8 +7,10 @@ let paraTempo: NodeJS.Timeout;
 
 export function Tempo(){
 
+    const { comecoDesafio } = useContext(DesafioContexts);
+
     /* Javascript do timer */
-    const [time, setTime] = useState(25 * 60);
+    const [time, setTime] = useState(0.1 * 60);
     const [isAtivo, setIsAtivo] = useState(false);
     const [hasTermino, setHastermino] = useState(false);
 
@@ -38,6 +41,8 @@ export function Tempo(){
         } else if(setIsAtivo && time === 0){
             setHastermino(true);
             setIsAtivo(false);
+            comecoDesafio();
+            
         }
 
     }, [isAtivo, time]) 

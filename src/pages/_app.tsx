@@ -1,13 +1,13 @@
 import '../styles/global.css'
 
-import {DesafioContexts} from '../contexts/DesafioContexts';
+import {DesafioProvider} from '../contexts/DesafioContext';
  
 function MyApp({ Component, pageProps }) {
   return (
-    <DesafioContexts.Provider value='teste'>
+    <DesafioProvider>
       <Component {...pageProps} />
-          </DesafioContexts.Provider>
-          
+      </DesafioProvider>
+           
   )
 }  
 export default MyApp

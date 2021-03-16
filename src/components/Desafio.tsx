@@ -1,6 +1,13 @@
+import { useContext } from 'react';
+import { DesafioContexts } from '../contexts/DesafioContext';
 import styles from '../styles/components/Desafio.module.css'
 
 export function Desafio(){
+
+    //contexts
+    const contextData = useContext(DesafioContexts);
+
+
     const hasAtivoDesafio = true;
 
     return(
