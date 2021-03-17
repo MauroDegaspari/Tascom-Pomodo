@@ -7,6 +7,14 @@ export function Desafio(){
     //contexts
     const {ativaDesafio, restartDesafio, completadoDesafio} = useContext(DesafioContexts);
 
+    function acaoConseguir(){
+        return;
+    }
+
+    function acaoNaoConseguir(){
+        restartDesafio();
+    }
+
     return(
         <div className={styles.desafioContainer}>                       
            { ativaDesafio ? (

@@ -1,51 +1,22 @@
-import { useState, useEffect, useContext } from 'react';
-import { DesafioContexts } from '../contexts/DesafioContext';
+import { useContext } from 'react';
+import { TempoContext } from '../contexts/TempoContext';
+ 
 import styles from '../styles/components/Tempo.module.css'
 
 
-let paraTempo: NodeJS.Timeout;
+
 
 export function Tempo(){
 
-    const { comecoDesafio } = useContext(DesafioContexts);
+    const {minutos, segundos,isAtivo, hasTermino, Restart, Start } = useContext(TempoContext);
 
-    /* Javascript do timer */
-    const [time, setTime] = useState(0.1 * 60);
-    const [isAtivo, setIsAtivo] = useState(false);
-    const [hasTermino, setHastermino] = useState(false);
-
-    const minutos = Math.floor(time / 60);
-    const segundo = time % 60;
-
+    
     const [minutoLeft, minutoRight] = String(minutos).padStart(2, '0').split('');
-    const [segundoLeft, segundoRight] = String(segundo).padStart(2, '0').split('');
+    const [segundoLeft, segundoRight] = String(segundos).padStart(2, '0').split('');
 
     
 
-    /* Funções de ações para o botão */
-    function Start(){
-        setIsAtivo(true);
-    }
-
-    function Restart(){
-        clearTimeout(paraTempo);
-        setIsAtivo(false);
-        setTime(25 * 60);
-    }
-
-    useEffect( () => {
-        if (isAtivo && time > 0 ){
-           paraTempo = setTimeout(() => {
-                setTime(time -1)
-            }, 1000)
-        } else if(setIsAtivo && time === 0){
-            setHastermino(true);
-            setIsAtivo(false);
-            comecoDesafio();
-            
-        }
-
-    }, [isAtivo, time]) 
+    
 
     return(
     <div>

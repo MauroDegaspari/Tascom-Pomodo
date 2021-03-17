@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState } from 'react';
 import desafios from '../../desafio.json';
 
 
+
 //Object com iformações dento dele
 interface Desafio{
     type: 'body' | 'eye';
