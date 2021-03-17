@@ -75,7 +75,7 @@ export function Tempo(){
                 </button> )
                 :
                 (<button type="button" className={styles.tempoButton} onClick={Start}>
-                Inicio ciclo
+                Iniciar ciclo
               </button>)
             }
             </>

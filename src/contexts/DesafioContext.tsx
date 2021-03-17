@@ -16,6 +16,7 @@ interface DesadioContextData{
     barraDeLevel: number;
     desafioConcluido: number;
     comecoDesafio: () => void;
+    restartDesafio: () => void;
     ativaDesafio: Desafio; // object do tipo interface criado referente ao arquico desafio.json
 }
 
@@ -42,6 +43,10 @@ export function DesafioProvider({ children }: DesafioProviderProps){
         setLevel(level + 1);
     }
 
+    function restartDesafio(){
+        setAtivaDesafio(null);
+    }
+
     function comecoDesafio(){
        
             const desafioRandow = Math.floor(Math.random() * desafios.length);
@@ -54,6 +59,7 @@ export function DesafioProvider({ children }: DesafioProviderProps){
         <DesafioContexts.Provider 
             value={{level,
                     ativaDesafio,
+                    restartDesafio,
                     subirDeLevel, 
                     barraDeLevel,
                     proximoNivel,

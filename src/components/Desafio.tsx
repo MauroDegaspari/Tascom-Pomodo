@@ -5,22 +5,22 @@ import styles from '../styles/components/Desafio.module.css'
 export function Desafio(){
 
     //contexts
-    const {ativaDesafio} = useContext(DesafioContexts);
+    const {ativaDesafio, restartDesafio} = useContext(DesafioContexts);
 
     return(
         <div className={styles.desafioContainer}>                       
            { ativaDesafio ? (
                <div className={styles.desafioAtivo}>
-                   <header>Ganhe {ativaDesafio.amount}</header>
+                   <header>Ganhe {ativaDesafio.amount} XP</header>
 
                    <main>
-                       <img src="icons/dumbbell.svg" ></img>
+                       <img src={`icons/${ativaDesafio.type}.svg`} ></img>
                        <strong>Novo desafio</strong>
-                       <p> Levante e faça uma caminhada de 3 min</p>
-                   </main>
+                       <p> {ativaDesafio.description} </p>
+                   </main>  
 
                    <footer>
-                       <button type="button" className={styles.buttonFalha}  >Falhei</button>
+                       <button type="button" className={styles.buttonFalha} onClick={restartDesafio} >Falhei</button>
                        <button type="button" className={styles.buttonCompletei}>Completei</button>
                    </footer>
                </div>
