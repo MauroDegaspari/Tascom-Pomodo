@@ -39,7 +39,8 @@ export function TempoContextProvider({ children }:TempoProviderProps){
     function Restart(){
         clearTimeout(paraTempo);
         setIsAtivo(false);
-        setTime(25 * 60);
+        setTime(0.1 * 60);
+        setHastermino(false);
     }
 
     useEffect( () => {

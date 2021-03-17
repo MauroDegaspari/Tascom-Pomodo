@@ -1,18 +1,21 @@
 import { useContext } from 'react';
 import { DesafioContexts } from '../contexts/DesafioContext';
+import { TempoContext } from '../contexts/TempoContext';
 import styles from '../styles/components/Desafio.module.css'
 
 export function Desafio(){
 
     //contexts
     const {ativaDesafio, restartDesafio, completadoDesafio} = useContext(DesafioContexts);
+    const {Restart} = useContext(TempoContext);
 
     function acaoConseguir(){
-        return;
+        completadoDesafio();
+        Restart();
     }
-
     function acaoNaoConseguir(){
         restartDesafio();
+        Restart();
     }
 
     return(
@@ -28,8 +31,8 @@ export function Desafio(){
                    </main>  
 
                    <footer>
-                       <button type="button" className={styles.buttonFalha} onClick={restartDesafio} >Falhei</button>
-                       <button type="button" className={styles.buttonCompletei} onClick={completadoDesafio} >Completei</button>
+                       <button type="button" className={styles.buttonFalha} onClick={acaoNaoConseguir} >Falhei</button>
+                       <button type="button" className={styles.buttonCompletei} onClick={acaoConseguir} >Completei</button>
                    </footer>
                </div>
                 ) : (
