@@ -5,7 +5,7 @@ import styles from '../styles/components/Desafio.module.css'
 export function Desafio(){
 
     //contexts
-    const {ativaDesafio, restartDesafio} = useContext(DesafioContexts);
+    const {ativaDesafio, restartDesafio, completadoDesafio} = useContext(DesafioContexts);
 
     return(
         <div className={styles.desafioContainer}>                       
@@ -21,7 +21,7 @@ export function Desafio(){
 
                    <footer>
                        <button type="button" className={styles.buttonFalha} onClick={restartDesafio} >Falhei</button>
-                       <button type="button" className={styles.buttonCompletei}>Completei</button>
+                       <button type="button" className={styles.buttonCompletei} onClick={completadoDesafio} >Completei</button>
                    </footer>
                </div>
                 ) : (

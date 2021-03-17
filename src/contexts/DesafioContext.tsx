@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from 'react';
 import desafios from '../../desafio.json';
 
+
 //Object com iformações dento dele
 interface Desafio{
     type: 'body' | 'eye';
@@ -17,6 +18,8 @@ interface DesadioContextData{
     desafioConcluido: number;
     comecoDesafio: () => void;
     restartDesafio: () => void;
+    completadoDesafio: () => void;
+
     ativaDesafio: Desafio; // object do tipo interface criado referente ao arquico desafio.json
 }
 
@@ -30,7 +33,7 @@ export const DesafioContexts = createContext({} as DesadioContextData);
 export function DesafioProvider({ children }: DesafioProviderProps){
     const[level, setLevel] = useState(1);
     const[barraDeLevel, setBarraDeLevel] = useState(0);
-    const[desafioConcluido, serDesafioConcluido] = useState(0);
+    const[desafioConcluido, setDesafioConcluido] = useState(0);
 
     const[ativaDesafio, setAtivaDesafio] = useState(null);
     
@@ -46,6 +49,24 @@ export function DesafioProvider({ children }: DesafioProviderProps){
     function restartDesafio(){
         setAtivaDesafio(null);
     }
+
+    function completadoDesafio(){
+if (!ativaDesafio){
+    return;
+}   
+    const {amount} = ativaDesafio;
+    let exFinal =  barraDeLevel + amount; // variavel let para poder receber outro valor no futuro
+    
+    if ( exFinal >= proximoNivel){
+            exFinal = exFinal - proximoNivel;
+        subirDeLevel();
+
+        setBarraDeLevel(exFinal);
+        setAtivaDesafio(null);
+        setDesafioConcluido(desafioConcluido + 1);
+    }
+
+}
 
     function comecoDesafio(){
        
@@ -63,6 +84,7 @@ export function DesafioProvider({ children }: DesafioProviderProps){
                     subirDeLevel, 
                     barraDeLevel,
                     proximoNivel,
+                    completadoDesafio,
                     desafioConcluido,
                     comecoDesafio }}>
             { children}
