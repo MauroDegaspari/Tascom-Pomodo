@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import desafios from '../../desafio.json';
 
 
@@ -41,6 +41,10 @@ export function DesafioProvider({ children }: DesafioProviderProps){
     // formula para calcular experiencia do ususario
     const proximoNivel = Math.pow((level + 1) * 4, 2);
 
+    useEffect(() => {
+       Notification.requestPermission(); 
+    }, [])
+
     
      
     function subirDeLevel(){
@@ -74,7 +78,16 @@ if (!ativaDesafio){
             const desafioRandow = Math.floor(Math.random() * desafios.length);
             const desafio = desafios[desafioRandow];
 
-            setAtivaDesafio(desafio);
+            setAtivaDesafio(desafio); 
+            
+            new Audio('/notificacao.mp3').play();
+
+            // caso o usuario tenha dado permissao isso acontece 
+            if(Notification.permission === 'granted'){
+                 new Notification('Novo Desafio!! ', {
+                     body:`valendo ${desafio.amount} xp`
+                 } )
+            }
         
     }
     return(
